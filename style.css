@@ -13,6 +13,7 @@ body {
 
 .main {
 	width: 350px;
+	max-width: 90%;
 	height: 556px;
 	background: red;
 	overflow: hidden;
@@ -127,4 +128,29 @@ button:hover {
 	font-size: 20px;
 	margin-top: 15px;
 	margin-bottom: 15px;
+}
+
+/* Responsiveness for small devices */
+@media (max-width: 400px) {
+	.main {
+		height: 500px;
+	}
+
+	label {
+		font-size: 1.8em;
+		margin: 30px;
+	}
+
+	input,
+	button {
+		width: 80%;
+	}
+
+	.login {
+		height: 330px;
+	}
+
+	#chk:checked~.login {
+		transform: translateY(-500px);
+	}
 }
