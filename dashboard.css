@@ -1,0 +1,269 @@
+.navbar {
+    background-color: #282354;
+    min-height: 80px;
+    padding: 10px 0;
+}
+
+.navbar-brand {
+    color: white !important;
+    font-size: 1.5rem;
+}
+
+/* Custom Theme Colors */
+.bg-theme {
+    background-color: #282354 !important;
+    color: white;
+}
+
+.btn-theme {
+    background-color: #282354 !important;
+    color: white !important;
+    border: 1px solid #282354 !important;
+}
+
+.btn-theme:hover {
+    background-color: #1e1a40 !important;
+    color: white !important;
+    border-color: #1e1a40 !important;
+}
+
+/* Scrollable Sections */
+.scrollable-section {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .scrollable-section {
+        max-height: none;
+        overflow-y: visible;
+    }
+}
+
+/* Template Cards */
+.template-card {
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.template-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.template-card.selected {
+    border-color: #282354;
+    box-shadow: 0 0 10px rgba(40, 35, 84, 0.3);
+}
+
+.template-card.selected .template-name {
+    color: #282354;
+    font-weight: bold;
+}
+
+.template-name {
+    margin-top: 10px;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* Template Previews (Skeletons) */
+.template-preview {
+    height: 150px;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.skeleton-header {
+    height: 20px;
+    width: 100%;
+    background: #e0e0e0;
+    margin-bottom: 15px;
+}
+
+.skeleton-header-center {
+    height: 20px;
+    width: 60%;
+    background: #e0e0e0;
+    margin: 0 auto 15px auto;
+}
+
+.skeleton-body .line {
+    height: 8px;
+    background: #e0e0e0;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.skeleton-body .line.half {
+    width: 50%;
+}
+
+/* Specific Preview Styles */
+.modern-preview .skeleton-header {
+    background-color: #3b5998;
+}
+
+.minimalist-preview {
+    background-color: #fff;
+    border: 1px solid #eee;
+}
+
+.professional-preview {
+    flex-direction: row;
+}
+
+.professional-preview .sidebar {
+    width: 30%;
+    background: #2c3e50;
+    height: 100%;
+    margin-right: 10px;
+}
+
+.creative-preview .accent-top {
+    height: 10px;
+    width: 100%;
+    background: #e74c3c;
+    margin-bottom: 10px;
+}
+
+
+/* Cards */
+.card {
+    border-radius: 15px;
+    border: none;
+    overflow: hidden;
+    /* Keeps header corners rounded */
+}
+
+#cvForm {
+    margin: 20px;
+}
+
+/* --- Dark Mode Styles --- */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .card {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border-color: #333;
+}
+
+body.dark-mode .card-header {
+    background-color: #333 !important;
+    color: #fff;
+    border-bottom-color: #444;
+}
+
+body.dark-mode .card-body.bg-light {
+    background-color: #2d2d2d !important;
+}
+
+body.dark-mode .form-control {
+    background-color: #333;
+    color: #fff;
+    border-color: #444;
+}
+
+body.dark-mode .form-control:focus {
+    background-color: #444;
+    color: #fff;
+}
+
+body.dark-mode .form-control::placeholder {
+    color: #fff !important;
+    opacity: 1;
+}
+
+body.dark-mode .template-card {
+    background-color: #2d2d2d;
+    border-color: #444;
+}
+
+body.dark-mode .template-card .template-name {
+    color: #ccc;
+}
+
+body.dark-mode .template-card.selected {
+    border-color: #5dade2;
+    background-color: #333;
+}
+
+body.dark-mode .template-card.selected .template-name {
+    color: #5dade2;
+}
+
+body.dark-mode h2,
+body.dark-mode h4,
+body.dark-mode h5 {
+    color: #f0f0f0 !important;
+}
+
+body.dark-mode .text-primary {
+    color: #5dade2 !important;
+}
+
+body.dark-mode .text-muted {
+    color: #aaa !important;
+}
+
+body.dark-mode .skeleton-body .line,
+body.dark-mode .skeleton-header,
+body.dark-mode .skeleton-header-center {
+    background: #555;
+}
+
+/* Dashboard Specific Responsive Adjustments */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    #cvForm {
+        margin: 10px;
+    }
+
+    .template-card {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .d-flex.justify-content-between {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 15px;
+    }
+
+    #createResumeBtn {
+        width: 100%;
+    }
+}

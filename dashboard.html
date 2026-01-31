@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Maker</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bgcolor">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><b>CV Maker</b></a>
+      <div class="ms-auto d-flex gap-2">
+        <button class="btn btn-outline-light" id="darkModeBtn">🌙 Theme</button>
+        <button class="btn btn-outline-light" id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+
+  <div class="container-fluid mt-4">
+    <!-- Section: My Resumes List -->
+    <div id="resumeListSection">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>My Resumes</h2>
+        <button class="btn btn-success" id="createResumeBtn">+ Create New Resume</button>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="input-group mb-4">
+        <input type="text" id="searchInput" class="form-control"
+          placeholder="Search resumes by title, name, or skills...">
+        <button class="btn btn-success" type="button" id="searchBtn">Search</button>
+      </div>
+      <div id="resumeListContainer" class="row g-4">
+        <!-- Resumes will be dynamically inserted here -->
+        <div class="col-12 text-center text-muted">
+          <p>No resumes found. Create one to get started!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Resume Editor (Form + Templates) -->
+    <div id="resumeEditorSection" class="d-none">
+      <div class="mb-3">
+        <button class="btn btn-theme" id="backToDashboardBtn"
+          style="background-color: #282354 !important; color: white !important;">&larr; Back to Dashboard</button>
+      </div>
+      <div class="row">
+        <!-- Left Side: CV Form -->
+        <div class="col-md-6">
+          <div class="card shadow-sm">
+            <div class="card-header bg-theme text-white">
+              <h4 class="mb-0">Enter Your Details</h4>
+            </div>
+            <div class="card-body scrollable-section">
+              <form id="cvForm">
+                <input type="hidden" name="id" id="resumeId"> <!-- Hidden ID for updates -->
+
+                <!-- Personal Info -->
+                <h5 class="mb-3 text-primary">Personal Information</h5>
+                <div class="mb-3">
+                  <label class="form-label">Full Name</label>
+                  <input type="text" name="fullName" id="fullName" class="form-control" placeholder="John Doe" required>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="john@example.com"
+                      required>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Phone</label>
+                    <input type="tel" name="phone" id="phone" class="form-control" placeholder="+1 234 567 890">
+                  </div>
+                </div>
+
+                <hr>
+
+                <!-- Education -->
+                <h5 class="mb-3 text-primary">Education</h5>
+                <div class="mb-3">
+                  <label class="form-label">Degree</label>
+                  <input type="text" name="degree" id="degree" class="form-control"
+                    placeholder="Bachelor of Science in CS">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">University/School</label>
+                  <input type="text" name="university" id="university" class="form-control"
+                    placeholder="Harvard University">
+                </div>
+
+                <hr>
+
+                <!-- Experience -->
+                <h5 class="mb-3 text-primary">Experience</h5>
+                <div class="mb-3">
+                  <label class="form-label">Job Title</label>
+                  <input type="text" name="jobTitle" id="jobTitle" class="form-control" placeholder="Software Engineer">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Company</label>
+                  <input type="text" name="company" id="company" class="form-control" placeholder="Google">
+                </div>
+
+                <hr>
+
+                <!-- Skills -->
+                <h5 class="mb-3 text-primary">Skills</h5>
+                <div class="mb-3">
+                  <label class="form-label">Skills (comma separated)</label>
+                  <input type="text" name="skills" id="skills" class="form-control" placeholder="HTML, CSS, JavaScript">
+                </div>
+
+                <!-- Languages -->
+                <h5 class="mb-3 text-primary">Languages</h5>
+                <div class="mb-3">
+                  <label class="form-label">Languages (comma separated)</label>
+                  <input type="text" name="languages" id="languages" class="form-control"
+                    placeholder="English, Spanish">
+                </div>
+
+                <!-- Profile Summary -->
+                <h5 class="mb-3 text-primary">Profile Summary</h5>
+                <div class="mb-3">
+                  <label class="form-label">Summary</label>
+                  <textarea name="summary" id="summary" class="form-control" rows="3"
+                    placeholder="Brief summary about yourself..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-theme w-100 mt-3" id="saveBtn">Save & Generate CV</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Template Preview -->
+        <div class="col-md-6">
+          <div class="card shadow-sm">
+            <div class="card-header bg-theme text-white">
+              <h4 class="mb-0">Select a Template</h4>
+            </div>
+            <div class="card-body bg-light scrollable-section">
+              <div class="row" id="templateGallery">
+                <!-- Template 1 -->
+                <div class="col-md-6 mb-4">
+                  <div class="template-card selected" data-template="modern">
+                    <div class="template-preview modern-preview">
+                      <div class="skeleton-header"></div>
+                      <div class="skeleton-body">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line half"></div>
+                      </div>
+                    </div>
+                    <div class="template-name">Modern</div>
+                  </div>
+                </div>
+                <!-- Template 2 -->
+                <div class="col-md-6 mb-4">
+                  <div class="template-card" data-template="minimalist">
+                    <div class="template-preview minimalist-preview">
+                      <div class="skeleton-header-center"></div>
+                      <div class="skeleton-body">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                      </div>
+                    </div>
+                    <div class="template-name">Minimalist</div>
+                  </div>
+                </div>
+                <!-- Template 3 -->
+                <div class="col-md-6 mb-4">
+                  <div class="template-card" data-template="professional">
+                    <div class="template-preview professional-preview">
+                      <div class="sidebar"></div>
+                      <div class="content">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                      </div>
+                    </div>
+                    <div class="template-name">Professional</div>
+                  </div>
+                </div>
+                <!-- Template 4 -->
+                <div class="col-md-6 mb-4">
+                  <div class="template-card" data-template="creative">
+                    <div class="template-preview creative-preview">
+                      <div class="accent-top"></div>
+                      <div class="skeleton-body">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                      </div>
+                    </div>
+                    <div class="template-name">Creative</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="dashboard.js"></script>
+  <!-- Bootstrap JS (using a known version) -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
