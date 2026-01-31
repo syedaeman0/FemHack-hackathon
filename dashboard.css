@@ -9,6 +9,26 @@
     font-size: 1.5rem;
 }
 
+/*background image */
+body {
+    background-image: url("https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0zODAtMDIuanBn.jpg") !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    background-position: center !important;
+}
+
+body.dark-mode {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0zODAtMDIuanBn.jpg") !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    background-position: center !important;
+}
+
+#resumeListSection h2 {
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 /* Custom Theme Colors */
 .bg-theme {
     background-color: #282354 !important;
