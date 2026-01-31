@@ -153,10 +153,11 @@
     margin: 20px;
 }
 
-/* --- Dark Mode Styles --- */
+
+
 body.dark-mode {
     background-color: #121212;
-    color: #e0e0e0;
+    background-image: none;
 }
 
 body.dark-mode .card {
