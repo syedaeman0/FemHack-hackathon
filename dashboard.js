@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 confirmButtonColor: '#282354',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes, logout!',
-                
+
             }).then((result) => {
                 if (result.isConfirmed) {
                     localStorage.removeItem("currentUser");
@@ -325,9 +325,10 @@ function generateCVHTML(data, templateName) {
         .cv-container {
             background: white;
             box-shadow: 0 0 40px rgba(0,0,0,0.1);
-            margin: 30px auto;
+            margin: 20px auto;
             overflow: hidden;
-            width: 210mm; /* A4 Width */
+            width: 95%;
+            max-width: 210mm; /* A4 Width */
             min-height: 297mm; /* A4 Height */
         }
         .editable:hover { background: rgba(0,0,0,0.02); cursor: pointer; border-radius: 4px; }
@@ -336,6 +337,19 @@ function generateCVHTML(data, templateName) {
             font-weight: 700; text-transform: uppercase;
             letter-spacing: 1.5px; border-bottom: 2px solid #eee;
             padding-bottom: 8px; margin-bottom: 15px;
+        }
+
+        /* Mobile Action Bar */
+        @media (max-width: 600px) {
+            .action-bar {
+                padding: 0 10px;
+                height: auto;
+                flex-direction: column;
+                padding-bottom: 10px;
+            }
+            .action-bar .brand { padding: 10px 0; }
+            .action-bar .actions { flex-wrap: wrap; justify-content: center; }
+            body { padding-top: 130px; }
         }
 
         /* Dark Mode */
@@ -359,11 +373,16 @@ function generateCVHTML(data, templateName) {
                 padding: 50px 35px; box-sizing: border-box;
             }
             .main-content {
-                width: 65%; padding: 60px 50px; box-sizing: border-box;
+                width: 65%; padding: 60px 40px; box-sizing: border-box;
+            }
+            @media (max-width: 768px) {
+                .cv-container { display: block; }
+                .sidebar, .main-content { width: 100%; padding: 30px 20px; }
             }
             .sidebar .section-title { color: #5dade2; border-color: rgba(255,255,255,0.1); font-size: 1.1rem; }
             .sidebar .contact-info p { font-size: 0.9rem; margin: 8px 0; opacity: 0.9; }
-            .header h1 { font-size: 3rem; margin: 0; color: #2c3e50; font-weight: 800; }
+            .header h1 { font-size: 2.5rem; margin: 0; color: #2c3e50; font-weight: 800; }
+            @media (max-width: 480px) { .header h1 { font-size: 1.8rem; } }
             .header .job-title { font-size: 1.25rem; color: #3498db; font-weight: 500; margin-top: 4px; }
             .sidebar p, .sidebar h3 { font-size: 0.95rem; margin-top: 0; }
             .item h3 { margin-bottom: 4px; font-weight: 700; }
@@ -375,17 +394,18 @@ function generateCVHTML(data, templateName) {
         styles = `
             ${commonStyles}
             .cv-container { padding: 0; }
-            .header { background: #2c3e50; color: white; padding: 60px 50px; text-align: center; }
-            .header h1 { font-size: 3.5rem; margin: 0; }
-            .content-wrapper { padding: 50px; }
+            .header { background: #2c3e50; color: white; padding: 40px 20px; text-align: center; }
+            .header h1 { font-size: 2.5rem; margin: 0; }
+            @media (max-width: 480px) { .header h1 { font-size: 1.8rem; } }
+            .content-wrapper { padding: 30px 20px; }
             .section-title { color: #3498db; border-color: #3498db; }
         `;
     } else if (templateName === 'Minimalist') {
         styles = `
             ${commonStyles}
-            .cv-container { padding: 80px 100px; max-width: 800px; box-shadow: none; border: 1px solid #eee; }
-            .header { border-bottom: 2px solid #333; margin-bottom: 40px; padding-bottom: 20px; }
-            .section-title { border: none; font-size: 1.2rem; text-decoration: underline; margin-bottom: 20px; }
+            .cv-container { padding: 40px 20px; max-width: 800px; box-shadow: none; border: 1px solid #eee; }
+            .header { border-bottom: 2px solid #333; margin-bottom: 30px; padding-bottom: 15px; }
+            .section-title { border: none; font-size: 1.2rem; text-decoration: underline; margin-bottom: 15px; }
         `;
     } else {
         // Creative / Default
